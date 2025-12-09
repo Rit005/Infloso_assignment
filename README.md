@@ -15,6 +15,7 @@ Users can create an account, login, and access protected content only after succ
 - Axios
 - Tailwind CSS
 - LocalStorage / SessionStorage
+- (Optional) Framer Motion, styled-components, Redux Toolkit
 
 ### 🖧 Backend
 - Node.js
@@ -25,66 +26,82 @@ Users can create an account, login, and access protected content only after succ
 - bcrypt hashing
 - dotenv
 - CORS
+- (Optional) supertest (API testing)
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
 ### 🔐 Authentication
-- Signup with username + email
-- Login with email and password
-- Password confirmation logic
-- Hashing passwords with bcrypt
-- JWT generation with expiry
-- Token stored securely on client
+- Signup (username, email, password)
+- Login (email, password)
+- Confirm password logic
+- Secure bcrypt password hashing
+- JWT generation with expiration
+- Token stored on the client (local/session storage)
 
 ### 🛡 Security
-- Unique email / username enforcement
-- JWT validation in protected routes
-- Middleware for token verification
-- Error handling and input validation
+- Unique username and email enforcement
+- Node.js JWT token generation
+- Token expiration (default `7 days`)
+- Custom Express middleware to protect routes
+- Form and server-side validation
 
-### 🎨 UI/UX (MelodyVerse Theme)
-- Modern music-inspired UI
-- Responsive design with Tailwind
-- Form validation & clear error messages
+### 🎨 UI/UX – MelodyVerse Theme
+- Responsive UI with Tailwind CSS
+- Modern design inspired by music apps
+- Form validation + error messages
 - Terms & conditions checkbox
-- “Remember Me” option (local or session storage)
+- “Remember Me” option
 - Simulated welcome email notification
 
 ---
 
-## 🗂️ Folder Structure
 
-Infloso_assignment/
-│
-├── backend/
-│ ├── controllers/
-│ │ └── authController.js
-│ ├── middleware/
-│ │ └── authMiddleware.js
-│ ├── models/
-│ │ └── User.js
-│ ├── routes/
-│ │ └── authRoutes.js
-│ ├── db.js
-│ ├── app.js
-│ ├── package.json
-│ └── .env
-│
-└── frontend/
-├── src/
-│ ├── pages/
-│ │ ├── Login.jsx
-│ │ ├── Signup.jsx
-│ │ └── Home.jsx
-│ ├── components/
-│ │ └── ProtectedRoute.jsx
-│ ├── utils/
-│ │ └── api.js
-│ ├── App.jsx
-│ └── main.jsx
-├── public/
-├── index.html
-├── package.json
-└── tailwind.config.js
+
+The following extra features are planned or can be added to improve real-world functionality:
+
+- 🔄 Password reset flow (email/token)
+- 📧 Email verification during signup
+- 🛡 API rate limiting (prevent brute force attacks)
+- 🟢 Middleware-based role authorization (admin/user)
+- 🧪 Unit tests for API (Jest + Supertest)
+- 👁 Password visibility toggle on input fields
+- ✨ UI animations using Framer Motion
+- ♿ Accessibility features (ARIA, keyboard navigation)
+- 🧪 Unit testing React components (Jest + RTL)
+
+> This is a sample assignment, and creativity is encouraged.  
+> Additional styling libraries like `styled-components` or state management using `Redux Toolkit` can be used.
+
+---
+
+# 🧂 Error Handling & Edge Cases
+
+### Server Handling
+- Missing fields return **400 Bad Request**
+- Email already exists → **409 Conflict / 400 Bad Request**
+- Invalid credentials → **400 Bad Request**
+- Expired token → **401 Unauthorized**
+- No token → **401 Unauthorized**
+- Unexpected server errors → **500 Internal Server Error**
+
+### Input Validation
+- Empty username/email/password blocked
+- Password length (`>=6`) enforced
+- Passwords must match
+- Valid email format via RegEx
+- Terms & Conditions required
+
+All errors return a **JSON response** with a **descriptive message**:
+
+```json
+{ "message": "User already exists" }
+
+🧪 How to Run & Test the API
+
+git clone https://github.com/Rit005/infloso_assignment.git
+cd infloso_assignment/backend && npm install && npm run dev
+# open new terminal
+cd infloso_assignment/frontend && npm install && npm run dev
+
