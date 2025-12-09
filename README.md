@@ -1,16 +1,90 @@
-# React + Vite
+# Infloso Assignment – Full-Stack Authentication System (MelodyVerse Theme)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **Full-Stack Authentication System** created as part of the **Infloso Developer Assignment**.  
+It features **secure user Signup, Login, JWT-based authentication, protected routes**, and a modern **React UI (MelodyVerse Theme)**.
 
-Currently, two official plugins are available:
+Users can create an account, login, and access protected content only after successful authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🖥 Frontend
+- React.js
+- React Router DOM
+- Axios
+- Tailwind CSS
+- LocalStorage / SessionStorage
 
-## Expanding the ESLint configuration
+### 🖧 Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT (`jsonwebtoken`)
+- bcrypt hashing
+- dotenv
+- CORS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+### 🔐 Authentication
+- Signup with username + email
+- Login with email and password
+- Password confirmation logic
+- Hashing passwords with bcrypt
+- JWT generation with expiry
+- Token stored securely on client
+
+### 🛡 Security
+- Unique email / username enforcement
+- JWT validation in protected routes
+- Middleware for token verification
+- Error handling and input validation
+
+### 🎨 UI/UX (MelodyVerse Theme)
+- Modern music-inspired UI
+- Responsive design with Tailwind
+- Form validation & clear error messages
+- Terms & conditions checkbox
+- “Remember Me” option (local or session storage)
+- Simulated welcome email notification
+
+---
+
+## 🗂️ Folder Structure
+
+Infloso_assignment/
+│
+├── backend/
+│ ├── controllers/
+│ │ └── authController.js
+│ ├── middleware/
+│ │ └── authMiddleware.js
+│ ├── models/
+│ │ └── User.js
+│ ├── routes/
+│ │ └── authRoutes.js
+│ ├── db.js
+│ ├── app.js
+│ ├── package.json
+│ └── .env
+│
+└── frontend/
+├── src/
+│ ├── pages/
+│ │ ├── Login.jsx
+│ │ ├── Signup.jsx
+│ │ └── Home.jsx
+│ ├── components/
+│ │ └── ProtectedRoute.jsx
+│ ├── utils/
+│ │ └── api.js
+│ ├── App.jsx
+│ └── main.jsx
+├── public/
+├── index.html
+├── package.json
+└── tailwind.config.js
